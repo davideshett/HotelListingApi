@@ -31,6 +31,7 @@ using (var scope = app.Services.CreateScope())
     //var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
     context.Database.Migrate();
     await Seed.SeedCountry(context);
+    await Seed.SeedHotel(context);
 }
 
 // Configure the HTTP request pipeline.

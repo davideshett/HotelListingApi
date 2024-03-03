@@ -31,6 +31,27 @@ namespace api.Data.Seeder
             }
             await _context.SaveChangesAsync();
         }
+
+        public static async Task SeedHotel(DataContext _context)
+        {
+            // var serializer = new JsonSerializer();
+            // List<Country> teachers = new();
+            // using (var streamReader = new StreamReader("Data/Seeder/CountryTableSeeder.json"))
+            // using (var textReader = new JsonTextReader(streamReader))
+            // {
+            //     teachers = serializer.Deserialize<List<Country>>(textReader);
+            // }
+
+            if (await _context.Hotels.AnyAsync()) return;
+            var HotelData = await File.ReadAllTextAsync("Data/Seeder/HotelTableSeeder.json");
+            var Hotels = JsonConvert.DeserializeObject<List<Hotel>>(HotelData);
+            foreach (var Hotel in Hotels)
+            {
+                _context.Hotels.Add(Hotel);
+                Console.WriteLine(Hotel.Name);
+            }
+            await _context.SaveChangesAsync();
+        }
     }
 
 }
