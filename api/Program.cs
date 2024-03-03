@@ -1,4 +1,5 @@
 using api;
+using api.Data.Seeder;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -22,6 +23,15 @@ builder.Services.AddCors(options =>
 builder.Host.UseSerilog((ctx, lc)=> lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+    //var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    //var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
+    context.Database.Migrate();
+    await Seed.SeedCountry(context);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
