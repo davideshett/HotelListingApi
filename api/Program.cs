@@ -1,5 +1,6 @@
 using api;
 using api.Data.Seeder;
+using api.Repo.Interface;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -19,6 +20,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         b => b.AllowAnyHeader().AllowAnyOrigin().AllowAnyHeader());
 });
+
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Host.UseSerilog((ctx, lc)=> lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
 
