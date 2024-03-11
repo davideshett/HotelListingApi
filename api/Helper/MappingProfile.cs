@@ -15,6 +15,7 @@ namespace api.Helper
         {
             CreateMap<Country, UpdateCountryDto>().ReverseMap();
             CreateMap<Hotel, GetHotelDto>().ReverseMap();
+            CreateMap<Hotel, SingleHotelDto>().ReverseMap();
         }
     }
 }

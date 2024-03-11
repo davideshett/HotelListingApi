@@ -1,240 +1,240 @@
 [
     {
-        "name": "Luxury Hotel 1",
+        "name": "Luxury Hotel",
         "address": "123 Main Street, Cityville",
         "countryId": 229,
         "rating": 4.5
     },
     {
-        "name": "Grand Plaza Hotel 2",
+        "name": "Grand Plaza Hotel",
         "address": "456 Downtown Avenue, Metropolis",
         "countryId": 229,
         "rating": 4.2
     },
     {
-        "name": "Elegant Suites 3",
+        "name": "Elegant Suites",
         "address": "789 Seaside Road, Beachtown",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Charming Inn 4",
+        "name": "Charming Inn",
         "address": "321 Riverside Drive, Countryside",
         "countryId": 229,
         "rating": 4.0
     },
     {
-        "name": "Majestic Resort 5",
+        "name": "Majestic Resort",
         "address": "555 Mountain View, Highlands",
         "countryId": 229,
         "rating": 4.7
     },
     {
-        "name": "Seaview Lodge 6",
+        "name": "Seaview Lodge",
         "address": "876 Coastal Lane, Shoreville",
         "countryId": 229,
         "rating": 4.6
     },
     {
-        "name": "Urban Retreat 7",
+        "name": "Urban Retreat",
         "address": "234 Cityscape Avenue, Downtown",
         "countryId": 229,
         "rating": 4.3
     },
     {
-        "name": "Tranquil Oasis 8",
+        "name": "Tranquil Oasis",
         "address": "789 Garden Path, Serenity",
         "countryId": 229,
         "rating": 4.9
     },
     {
-        "name": "Skyline Suites 9",
+        "name": "Skyline Suites",
         "address": "101 Skyscraper Blvd, Metro Heights",
         "countryId": 229,
         "rating": 4.4
     },
     {
-        "name": "Rustic Retreat 10",
+        "name": "Rustic Retreat",
         "address": "432 Countryside Lane, Rusticville",
         "countryId": 229,
         "rating": 4.2
     },
     {
-        "name": "Harbor View Hotel 11",
+        "name": "Harbor View Hotel",
         "address": "567 Waterfront Road, Harbor City",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Mountain Lodge 12",
+        "name": "Mountain Lodge",
         "address": "876 Summit Trail, Mountainville",
         "countryId": 229,
         "rating": 4.1
     },
     {
-        "name": "Central Plaza 13",
+        "name": "Central Plaza",
         "address": "345 Central Street, Downtown Central",
         "countryId": 229,
         "rating": 4.6
     },
     {
-        "name": "Green Valley Inn 14",
+        "name": "Green Valley Inn",
         "address": "678 Nature Lane, Greenvale",
         "countryId": 229,
         "rating": 4.7
     },
     {
-        "name": "Golden Sands Resort 15",
+        "name": "Golden Sands Resort",
         "address": "987 Beachfront Avenue, Gold Beach",
         "countryId": 229,
         "rating": 4.5
     },
     {
-        "name": "Royal Retreat 16",
+        "name": "Royal Retreat",
         "address": "210 Regal Road, Royaltyville",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Sunset Paradise 17",
+        "name": "Sunset Paradise",
         "address": "543 Sunset Blvd, Paradise City",
         "countryId": 229,
         "rating": 4.3
     },
     {
-        "name": "Alpine Chalet 18",
+        "name": "Alpine Chalet",
         "address": "876 Mountain View, Alpineside",
         "countryId": 229,
         "rating": 4.9
     },
     {
-        "name": "City Lights Hotel 19",
+        "name": "City Lights Hotel",
         "address": "123 Nightfall Lane, City Lights",
         "countryId": 229,
         "rating": 4.4
     },
     {
-        "name": "Whispering Pines Inn 20",
+        "name": "Whispering Pines Inn",
         "address": "456 Forest Trail, Pineville",
         "countryId": 229,
         "rating": 4.6
     },
     {
-        "name": "Oceanfront Retreat 21",
+        "name": "Oceanfront Retreat",
         "address": "789 Coastal Avenue, Oceanview",
         "countryId": 229,
         "rating": 4.7
     },
     {
-        "name": "Silver Springs Lodge 22",
+        "name": "Silver Springs Lodge",
         "address": "321 Silver Creek, Springville",
         "countryId": 229,
         "rating": 4.2
     },
     {
-        "name": "Sunny Side Inn 23",
+        "name": "Sunny Side Inn",
         "address": "555 Sunshine Lane, Sunnyville",
         "countryId": 229,
         "rating": 4.5
     },
     {
-        "name": "Historic Mansion Hotel 24",
+        "name": "Historic Mansion Hotel",
         "address": "876 Heritage Road, Historyville",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Palm Grove Resort 25",
-        "address": "101 Palm Street, Palm City",
+        "name": "Palm Grove Resort",
+   "address": "101 Palm Street, Palm City",
         "countryId": 229,
         "rating": 4.3
     },
     {
-        "name": "Tranquil Waterside Inn 26",
+        "name": "Tranquil Waterside Inn",
         "address": "234 Waterside Lane, Tranquility Bay",
         "countryId": 229,
         "rating": 4.9
     },
     {
-        "name": "Cityscape Suites 27",
+        "name": "Cityscape Suites",
         "address": "432 Downtown Drive, Cityscape",
         "countryId": 229,
         "rating": 4.4
     },
     {
-        "name": "Serenity Springs Resort 28",
+        "name": "Serenity Springs Resort",
         "address": "567 Meadow Lane, Serenity Springs",
         "countryId": 229,
         "rating": 4.6
     },
     {
-        "name": "Alpine View Lodge 29",
+        "name": "Alpine View Lodge",
         "address": "789 Mountain Ridge, Alpinetown",
         "countryId": 229,
         "rating": 4.1
     },
     {
-        "name": "Countryside Manor 30",
+        "name": "Countryside Manor",
         "address": "345 Country Road, Countrysidetown",
         "countryId": 229,
         "rating": 4.7
     },
     {
-        "name": "Sunrise Haven 31",
+        "name": "Sunrise Haven",
         "address": "123 Sunrise Avenue, Haventown",
         "countryId": 229,
         "rating": 4.2
     },
     {
-        "name": "Moonlight Resort 32",
+        "name": "Moonlight Resort",
         "address": "456 Moonbeam Lane, Moonlight City",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Azure Skies Inn 33",
+        "name": "Azure Skies Inn",
         "address": "789 Cloudview Road, Skytown",
         "countryId": 229,
         "rating": 4.6
     },
     {
-        "name": "Silver Lake Lodge 34",
+        "name": "Silver Lake Lodge",
         "address": "210 Silver Lake Drive, Lakeside",
         "countryId": 229,
         "rating": 4.3
     },
     {
-        "name": "Coral Reef Resort 35",
+        "name": "Coral Reef Resort",
         "address": "543 Oceanfront Lane, Coral Bay",
         "countryId": 229,
         "rating": 4.9
     },
     {
-        "name": "Grand Canyon Hotel 36",
+        "name": "Grand Canyon Hotel",
         "address": "876 Canyon Road, Grand City",
         "countryId": 229,
         "rating": 4.5
     },
     {
-        "name": "Golden Gate Suites 37",
+        "name": "Golden Gate Suites",
         "address": "101 Bridgeview Avenue, Bridgeville",
         "countryId": 229,
         "rating": 4.7
     },
     {
-        "name": "Whitewater Inn 38",
+        "name": "Whitewater Inn",
         "address": "234 Rapids Lane, Rapidstown",
         "countryId": 229,
         "rating": 4.2
     },
     {
-        "name": "Evergreen Retreat 39",
+        "name": "Evergreen Retreat",
         "address": "432 Pineview Drive, Evergreentown",
         "countryId": 229,
         "rating": 4.8
     },
     {
-        "name": "Cherry Blossom Hotel 40",
+        "name": "Cherry Blossom Hotel",
         "address": "567 Blossom",
         "countryId": 229,
         "rating": 4.8

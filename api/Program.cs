@@ -1,5 +1,7 @@
+using System.Text.Json.Serialization;
 using api;
 using api.Data.Seeder;
+using api.Repo;
 using api.Repo.Interface;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -22,9 +24,12 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Host.UseSerilog((ctx, lc)=> lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration));
+
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options => options.SerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
