@@ -9,13 +9,9 @@ using api.Models;
 
 namespace api.Repo.Interface
 {
-    public interface IHotelRepository
+    public interface IHotelRepository: IGenericRepository<Hotel> 
     {
-        Task<object> AddHotel(AddHotelDto dto);
-        Task<PagedList<Hotel>> GetHotels(HotelParams model);
-        Task<Hotel> GetHotel(int Id);
-        Task<object> UpdateHotel(UpdateHotelDto hotel);
-        Task<object> DeleteHotel(int id);
-        bool HotelExists(string name);
+       Task<PagedList<Hotel>> GetHotels(HotelParams model);
+       Task<Hotel> GetHotel(int id);
     }
 }

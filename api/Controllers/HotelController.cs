@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using api.Dto.CountryDto;
 using api.Dto.HotelDto;
 using api.Helper;
+using api.Models;
 using api.Repo.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -16,11 +17,13 @@ namespace api.Controllers
     {
         private readonly IHotelRepository repo;
         private readonly IMapper mapper;
+        private readonly ICountryRepository countryRepository;
 
-        public HotelController(IHotelRepository repo, IMapper mapper)
+        public HotelController(IHotelRepository repo, IMapper mapper,ICountryRepository countryRepository)
         {
             this.repo = repo;
             this.mapper = mapper;
+            this.countryRepository = countryRepository;
         }
 
         [HttpGet]
@@ -56,6 +59,12 @@ namespace api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetHotel(int id)
         {
+            if(! await repo.Exists(id))
+            {
+                return NotFound();
+            }
+
+
             var data = await repo.GetHotel(id);
             return Ok(new {
                 Message = "Successful",
@@ -74,7 +83,18 @@ namespace api.Controllers
                 return BadRequest();
             }
 
-            var data = await repo.AddHotel(model);
+            if(! await countryRepository.Exists(model.CountryId))
+            {
+                return NotFound(new {
+                    Message = "Country does not exist",
+                    IsSuccessful = false,
+                    StatusCode = 404
+                });
+            }
+
+            var hotel = mapper.Map<Hotel>(model);
+
+            var data = await repo.AddAsync(hotel);
             return Ok(data);
         }
 
@@ -82,15 +102,45 @@ namespace api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> UpdateHotel(UpdateHotelDto model)
         {
-            var data = await repo.UpdateHotel(model);
-            return Ok(data);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (!await countryRepository.Exists(model.CountryId))
+            {
+                return NotFound(new
+                {
+                    Message = "Country does not exist",
+                    IsSuccessful = false,
+                    StatusCode = 404
+                });
+            }
+
+            var hotel = mapper.Map<Hotel>(model);
+            await repo.UpdateAsync(hotel);
+            return Ok(new{
+                Message = "Success",
+                IsSuccessful = true,
+                StatusCode = 201
+            });
         }
 
         [HttpDelete("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteHotel(int id)
         {
-            var data = await repo.DeleteHotel(id);
+            if(! await repo.Exists(id))
+            {
+                return NotFound(new
+                {
+                    Message = "Hotel does not exist",
+                    IsSuccessful = false,
+                    StatusCode = 404
+                });
+            }
+            var data = await repo.DeleteAsync(id);
             return Ok(data);
         }
     }

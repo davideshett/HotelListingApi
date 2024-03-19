@@ -14,8 +14,11 @@ namespace api.Helper
         public MappingProfile()
         {
             CreateMap<Country, UpdateCountryDto>().ReverseMap();
+            CreateMap<Country, AddCountryDto>().ReverseMap();
             CreateMap<Hotel, GetHotelDto>().ReverseMap();
+            CreateMap<Hotel, AddHotelDto>().ReverseMap();
             CreateMap<Hotel, SingleHotelDto>().ReverseMap();
+            CreateMap<Hotel, UpdateHotelDto>().ReverseMap();
         }
     }
 }

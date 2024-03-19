@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dto.Params;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Helper
@@ -29,11 +30,11 @@ namespace api.Helper
             return new PagedList<T>(items, count, pageNumber, pageSize);
         }
 
-        public static PagedList<T> CreateListAsync(List<T> source, int pageNumber, int pageSize)
+        public static async Task<PagedList<T>> CustomPagedList(IQueryable<T> source, BaseParams baseParams)
         {
-            var count = source.Count();
-            var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
-            return new PagedList<T>(items, count, pageNumber, pageSize);
+            var count = await source.CountAsync();
+            var items = source.Skip((baseParams.PageNumber - 1) * baseParams.PageSize).Take(baseParams.PageSize).ToList();
+            return new PagedList<T>(items, count, baseParams.PageNumber, baseParams.PageSize);
         }
     }
 }

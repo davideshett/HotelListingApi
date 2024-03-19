@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Dto.CountryDto;
 using api.Helper;
+using api.Models;
 using api.Repo.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -26,6 +27,7 @@ namespace api.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetCountries([FromQuery] CountryParams model)
         {
+            
             var data = await repo.GetCountries(model);
             if(data == null)
             {
@@ -60,7 +62,10 @@ namespace api.Controllers
                 return BadRequest();
             }
 
-            var data = await repo.AddCountry(model);
+            var country = mapper.Map<Country>(model);
+
+            var data = await repo.AddAsync(country);
+
             return Ok(data);
         }
 
@@ -69,22 +74,36 @@ namespace api.Controllers
         public async Task<IActionResult> GetCountry(int id,int PageNumber, int PageSize)
         {
             var data = await repo.GetCountryById(id,PageNumber,PageSize);
-            return Ok(data);
+            return Ok(new{
+                HotelsCurrentPage = PageNumber,
+                HotelsPageSize = PageSize,
+                Data = data
+            });
         }
 
         [HttpPut]
         [AllowAnonymous]
         public async Task<IActionResult> UpdateCountry(UpdateCountryDto model)
         {
-            var data = await repo.UpdateCountry(model);
-            return Ok(data);
+            var country = mapper.Map<Country> (model);
+            await repo.UpdateAsync(country);
+            return Ok(country);
         }
 
         [HttpDelete("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var data = await repo.DeleteCountry(id);
+            var country = await repo.Exists(id);
+            if(country == false)
+            {
+                return NotFound(new {
+                    Message = "Not found",
+                    IsSuccessful = false,
+                    StatusCode = 404
+                });
+            }
+            var data = await repo.DeleteAsync(id);
             return Ok(data);
         }
     }

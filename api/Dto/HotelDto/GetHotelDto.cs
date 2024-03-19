@@ -1,3 +1,5 @@
+using api.Dto.CountryDto;
+
 namespace api.Dto.HotelDto
 {
     public class GetHotelDto

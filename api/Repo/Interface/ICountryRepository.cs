@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 using api.Dto.CountryDto;
 using api.Helper;
 using api.Models;
+using api.Response;
 
 namespace api.Repo.Interface
 {
-    public interface ICountryRepository
+    public interface ICountryRepository : IGenericRepository<Country>
     {
-        Task<object> AddCountry(AddCountryDto dto);
         Task<PagedList<Country>> GetCountries(CountryParams model);
-        Task<Country> GetCountry(int Id);
-        Task<object> GetCountryById(int Id, int PageNumber, int PageSize);
-        Task<object> UpdateCountry (UpdateCountryDto country);
-        Task<object> DeleteCountry(int id);
-        bool CountryExists(string name);
+        Task<object> GetCountryById(int id, int PageNumber, int PageSize);
     }
 }

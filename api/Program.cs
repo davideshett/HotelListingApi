@@ -24,6 +24,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IHotelRepository, HotelRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 
