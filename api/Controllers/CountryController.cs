@@ -54,7 +54,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> AddCountry(AddCountryDto model)
         {
             if(!ModelState.IsValid)
@@ -82,7 +82,6 @@ namespace api.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         public async Task<IActionResult> UpdateCountry(UpdateCountryDto model)
         {
             var country = mapper.Map<Country> (model);
@@ -91,7 +90,7 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id}")]
-        [AllowAnonymous]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
             var country = await repo.Exists(id);

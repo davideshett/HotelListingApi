@@ -1,0 +1,19 @@
+services:
+  hotelapi:
+    image: davideshett/hotelapi:22.03.24.01 
+    container_name: 'hotelapi'
+    restart: always
+    ports:
+      - 5009:80
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Sqlserverpassword17*"
+    ports:
+      - 1433:1433
