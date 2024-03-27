@@ -15,11 +15,14 @@ namespace api.Controllers
     {
         private readonly IAuthService authService;
         private readonly ITokenService tokenService;
+        private readonly ILogger<AuthController> logger;
 
-        public AuthController(IAuthService authService, ITokenService tokenService)
+        public AuthController(IAuthService authService, 
+        ITokenService tokenService, ILogger<AuthController> logger)
         {
             this.authService = authService;
             this.tokenService = tokenService;
+            this.logger = logger;
         }
 
         [HttpPost("register")]
@@ -29,8 +32,19 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Register ([FromBody] AddUserDto model)
         {
-            var data = await authService.Register(model);
-            return Ok(data);
+            logger.LogInformation($"Registration attempt for {model.Email}");
+
+            try
+            {
+                var data = await authService.Register(model);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                 logger.LogError($"Something went wrong in the {nameof(AddUserDto)}. Please contact support");
+                 return Problem($"Something went wrong in the {nameof(AddUserDto)}. Please contact support. {ex.Message}");
+            }
+            
 
         }
 

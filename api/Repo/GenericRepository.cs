@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Dto.Params;
+using api.Exceptions;
 using api.Helper;
 using api.Repo.Interface;
 using api.Response;
@@ -33,9 +34,9 @@ namespace api.Repo
         public async Task<object> DeleteAsync(int id)
         {
             var data = await GetAsync(id);
-            if (data is null)
+            if (data == null)
             {
-                return false;
+                throw new NotFoundException(nameof(DeleteAsync), id);
             }
 
             context.Set<T>().Remove(data);

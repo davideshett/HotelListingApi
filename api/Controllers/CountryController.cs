@@ -25,6 +25,7 @@ namespace api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        
         public async Task<IActionResult> GetCountries([FromQuery] CountryParams model)
         {
             
@@ -54,7 +55,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="Admin")]
+       // [Authorize(Roles ="Admin")]
         public async Task<IActionResult> AddCountry(AddCountryDto model)
         {
             if(!ModelState.IsValid)
@@ -70,7 +71,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> GetCountry(int id,int PageNumber, int PageSize)
         {
             var data = await repo.GetCountryById(id,PageNumber,PageSize);
@@ -90,7 +91,7 @@ namespace api.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
             var country = await repo.Exists(id);

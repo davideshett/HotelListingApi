@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Dto.CountryDto;
 using api.Dto.HotelDto;
+using api.Exceptions;
 using api.Helper;
 using api.Models;
 using api.Response;
@@ -59,6 +60,10 @@ namespace api.Repo.Interface
             }
 
             var data = await GetAsync(id);
+            if (data == null)
+            {
+                throw new NotFoundException(nameof(GetCountryById), id);
+            }
             var hotels = dataContext.Hotels.Where(x=> x.CountryId == data.Id).AsQueryable();
 
             var hotelList = mapper.Map<ICollection<GetHotelDto>>(await PagedList<Hotel>.CreateAsync(hotels, PageNumber, PageSize));

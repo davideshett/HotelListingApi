@@ -10,6 +10,7 @@ using api.Repo.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace api.Controllers
 {
@@ -25,35 +26,44 @@ namespace api.Controllers
             this.mapper = mapper;
             this.countryRepository = countryRepository;
         }
-
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetHotels([FromQuery] HotelParams model)
+        [EnableQuery]
+        public async Task <IActionResult> GetAll()
         {
-            var data = await repo.GetHotels(model);
-            if(data == null)
-            {
-                return BadRequest(new {
-                    Message = "Error",
-                    StatusCode = 401,
-                    IsSuccessful = false
-                });
-            }
-
-            Response.AddPagination(data.CurrentPage, data.PageSize, data.TotalCount, data.TotalPages);
-
-            return Ok(new {
-                data.CurrentPage,
-                data.PageSize,
-                data.TotalCount,
-                data.TotalPages,
-                Message = "Success",
-                StatusCode = 200,
-                IsSuccessful = true,
-                Data = mapper.Map<ICollection<GetHotelDto>>(data)
-            });
-
+            var hotelList = await repo.GetAllAsync();
+            return Ok(hotelList);
         }
+
+        // [HttpGet]
+        // [AllowAnonymous]
+        // [EnableQuery]
+        // public async Task<IActionResult> GetHotels([FromQuery] HotelParams model)
+        // {
+        //     var data = await repo.GetHotels(model);
+        //     if(data == null)
+        //     {
+        //         return BadRequest(new {
+        //             Message = "Error",
+        //             StatusCode = 401,
+        //             IsSuccessful = false
+        //         });
+        //     }
+
+        //     Response.AddPagination(data.CurrentPage, data.PageSize, data.TotalCount, data.TotalPages);
+
+        //     return Ok(new {
+        //         data.CurrentPage,
+        //         data.PageSize,
+        //         data.TotalCount,
+        //         data.TotalPages,
+        //         Message = "Success",
+        //         StatusCode = 200,
+        //         IsSuccessful = true,
+        //         Data = mapper.Map<ICollection<GetHotelDto>>(data)
+        //     });
+
+        // }
 
         [HttpGet("{id}")]
         [AllowAnonymous]

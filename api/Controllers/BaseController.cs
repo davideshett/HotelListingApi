@@ -9,9 +9,10 @@ using Microsoft.Extensions.Logging;
 
 namespace api.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class BaseController : ControllerBase
     {
         
